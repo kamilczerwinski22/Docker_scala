@@ -2,13 +2,9 @@ FROM ubuntu:18.04
 
 ENV TZ=Europe/Warsaw
 
-ENV JAVA_HOME /usr/lib/jvm/jdk8
-
-ENV PATH $PATH:$JAVA_HOME/bin
-
 # Standard packages
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y vim git wget unzip curl sudo
+RUN apt-get install -y vim sudo git wget unzip curl
 
 # Java
 RUN apt-get install -y openjdk-8-jdk
@@ -34,6 +30,6 @@ EXPOSE 3000
 
 USER kamilczerwinski
 WORKDIR /home/kamilczerwinski
-RUN mkdir /home/kamilczerwinski/scala_docker_project
+RUN mkdir /home/kamilczerwinski/ebiznes2021
 
-VOLUME /home/kamilczerwinsk/scala_docker_project
+VOLUME /home/kamilczerwinsk/ebiznes2021
