@@ -10,23 +10,26 @@ RUN apt-get install -y vim sudo git wget unzip curl
 RUN apt-get install -y openjdk-8-jdk
 
 # Scala
-RUN wget http://scala-lang.org/files/archive/scala-2.12.2.deb
-RUN dpkg -i scala-2.12.2.deb
+RUN wget http://scala-lang.org/files/archive/scala-2.12.12.deb
+RUN dpkg -i scala-2.12.12.deb
 
 # Npm
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - 
 RUN apt-get install -y nodejs 
 
 # Sbt
-RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-RUN apt-get update && apt-get install -y sbt 
+RUN wget https://scala.jfrog.io/artifactory/debian/sbt-1.5.1.deb
+RUN dpkg -i sbt-1.5.1.deb
+RUN apt-get update
+RUN apt-get install sbt
 
 # User
 RUN useradd -ms /bin/bash kamilczerwinski
 RUN adduser kamilczerwinski sudo
 
-EXPOSE 3000
+EXPOSE 8080
+EXPOSE 5000
+EXPOSE 9000
 
 USER kamilczerwinski
 WORKDIR /home/kamilczerwinski
