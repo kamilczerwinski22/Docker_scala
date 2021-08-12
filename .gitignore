@@ -12,6 +12,8 @@
 #
 # JARs aren't checked in, they are fetched by sbt
 #
+
+test.txt
 /lib/*.jar
 /test/files/codelib/*.jar
 /test/files/lib/*.jar
