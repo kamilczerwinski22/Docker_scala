@@ -1,0 +1,84 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.examples.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.examples.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+
+# Custom controllers CRUDs
+
+# User
+POST /user/create                   controllers.UserController.createUser
+GET /user/get/:id                   controllers.UserController.getUser(id)
+PUT /user/update                    controllers.UserController.updateUser
+DELETE /user/delete/:id             controllers.UserController.deleteUser(id)
+
+# Product
+POST /product/create                   controllers.ProductController.createProduct()
+GET /product/get/:id                   controllers.ProductController.getProduct(id)
+PUT /product/update                    controllers.ProductController.updateProduct()
+DELETE /product/delete/:id             controllers.ProductController.deleteProduct(id)
+
+# Product Category
+POST /product-category/create                   controllers.ProductCategoryController.createProductCategory()
+GET /product-category/get/:id                   controllers.ProductCategoryController.getProductCategory(id)
+PUT /product-category/update                    controllers.ProductCategoryController.updateProductCategory()
+DELETE /product-category/delete/:id             controllers.ProductCategoryController.deleteProductCategory(id)
+
+# Product Subcategory
+POST /product-subcategory/create                   controllers.ProductSubcategoryController.createProductSubcategory()
+GET /product-subcategory/get/:id                   controllers.ProductSubcategoryController.getProductSubcategory(id)
+PUT /product-subcategory/update                    controllers.ProductSubcategoryController.updateProductSubcategory()
+DELETE /product-subcategory/delete/:id             controllers.ProductSubcategoryController.deleteProductSubcategory(id)
+
+# Product Rating
+POST /product-rating/create                   controllers.ProductRatingController.createProductRating()
+GET /product-rating/get/:id                   controllers.ProductRatingController.getProductRating(id)
+PUT /product-rating/update                    controllers.ProductRatingController.updateProductRating()
+DELETE /product-rating/delete/:id             controllers.ProductRatingController.deleteProductRating(id)
+
+# Product In Stock
+POST /product-in-stock/create                   controllers.ProductInStockController.createProductInStock()
+GET /product-in-stock/get/:id                   controllers.ProductInStockController.getProductInStock(id)
+PUT /product-in-stock/update                    controllers.ProductInStockController.updateProductInStock()
+DELETE /product-in-stock/delete/:id             controllers.ProductInStockController.deleteProductInStock(id)
+
+# Payment
+POST /payment/create                   controllers.PaymentController.createPayment()
+GET /payment/get/:id                   controllers.PaymentController.getPayment(id)
+PUT /payment/update                    controllers.PaymentController.updatePayment()
+DELETE /payment/delete/:id             controllers.PaymentController.deletePayment(id)
+
+# Order
+POST /order/create                   controllers.OrderController.createOrder()
+GET /order/get/:id                   controllers.OrderController.getOrder(id)
+PUT /order/update                    controllers.OrderController.updateOrder()
+DELETE /order/delete/:id             controllers.OrderController.deleteOrder(id)
+
+# Coupons
+POST /coupon/create                   controllers.CouponController.createCoupon()
+GET /coupon/get/:id                   controllers.CouponController.getCoupon(id)
+PUT /coupon/update                    controllers.CouponController.updateCoupon()
+DELETE /coupon/delete/:id             controllers.CouponController.deleteCoupon(id)
+
+# Basket
+POST /basket/create                   controllers.BasketController.createBasket()
+GET /basket/get/:id                   controllers.BasketController.getBasket(id)
+PUT /basket/update                    controllers.BasketController.updateBasket()
+DELETE /basket/delete/:id             controllers.BasketController.deleteBasket(id)
+
+# Basket Item
+POST /basket-item/create                   controllers.BasketItemController.createBasketItem()
+GET /basket-item/get/:id                   controllers.BasketItemController.getBasketItem(id)
+PUT /basket-item/update                    controllers.BasketItemController.updateBasketItem()
+DELETE /basket-item/delete/:id             controllers.BasketItemController.deleteBasketItem(id)
+      
