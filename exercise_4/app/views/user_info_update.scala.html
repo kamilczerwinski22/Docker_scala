@@ -1,0 +1,33 @@
+@import controllers.view.UpdateUserInfoForm
+@(userInfo: Form[UpdateUserInfoForm], users: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.UserInfoController.updateUserInfoHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@userInfo("id").value" type="hidden" />
+    @inputText(userInfo("firstname"))
+    @inputText(userInfo("lastname"))
+    @inputText(userInfo("address"))
+    @inputText(userInfo("zipcode"))
+    @inputText(userInfo("city"))
+    @inputText(userInfo("country"))
+
+    <label for="user"></label>
+    <select name="userId" id="user">
+    @for(entity <- users) {
+        @if(entity.id.toString == userInfo("user").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.email</option>
+        } else {
+            <option value="@entity.id">@entity.email</option>
+        }
+
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Update userInfo"/>
+    </div>
+}

@@ -1,0 +1,15 @@
+@(userInfos: Seq[UserInfo])
+
+@for(userInfo <- userInfos) {
+    <strong>@userInfo.firstname</strong>
+    @userInfo.lastname
+    @userInfo.id
+    @userInfo.userId
+    @userInfo.address
+    @userInfo.zipcode
+    @userInfo.city
+    @userInfo.country
+    <a href="@controllers.view.routes.UserInfoController.updateUserInfo(userInfo.id)">Edit</a>
+    <a href="@controllers.view.routes.UserInfoController.deleteUserInfo(userInfo.id)">Delete</a>
+    <br>
+}

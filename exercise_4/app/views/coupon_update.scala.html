@@ -1,0 +1,18 @@
+@import controllers.view.UpdateCouponForm
+@(coupon: Form[UpdateCouponForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.view.routes.CouponController.updateCouponHandle) {
+        @helper.CSRF.formField
+        <input name="id" id="id" value="@coupon("id").value" type="hidden" />
+        @inputText(coupon("amount"))
+        @inputText(coupon("usages"))
+
+
+        <div class="buttons">
+            <input type="submit" value="Update coupon"/>
+        </div>
+    }

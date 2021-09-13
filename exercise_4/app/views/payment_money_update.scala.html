@@ -1,0 +1,28 @@
+@import controllers.view.UpdatePaymentMoneyForm
+@(paymentMoney: Form[UpdatePaymentMoneyForm], categories: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.PaymentMoneyController.updatePaymentMoneyHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@paymentMoney("id").value" type="hidden" />
+    @inputText(paymentMoney("cardholderName"))
+
+    <label for="user"></label>
+    <select name="userId" id="user">
+    @for(entity <- categories) {
+        @if(entity.id.toString == paymentMoney("user").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.email</option>
+        } else {
+            <option value="@entity.id">@entity.email</option>
+        }
+
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Update CreditCard"/>
+    </div>
+}

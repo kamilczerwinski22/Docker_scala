@@ -1,0 +1,195 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home Page
+GET           /                                                    controllers.view.HomeController.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file                                        controllers.Assets.versioned(path="/public", file: Asset)
+
+### FORMS
+## User
+GET           /form/user/list                                      controllers.view.UserController.listUsers
+GET           /form/user/create                                    controllers.view.UserController.createUser()
+POST          /form/user/create/handle                             controllers.view.UserController.createUserHandle()
+GET           /form/user/update/:id                                controllers.view.UserController.updateUser(id: Long)
+POST          /form/user/update/handle                             controllers.view.UserController.updateUserHandle
+GET           /form/user/delete/:id                                controllers.view.UserController.deleteUser(id: Long)
+
+## Stock
+GET           /form/stock/list                                     controllers.view.StockController.listStocks
+GET           /form/stock/create                                   controllers.view.StockController.createStock()
+POST          /form/stock/create/handle                            controllers.view.StockController.createStockHandle()
+GET           /form/stock/update/:id                               controllers.view.StockController.updateStock(id: Long)
+POST          /form/stock/update/handle                            controllers.view.StockController.updateStockHandle
+GET           /form/stock/delete/:id                               controllers.view.StockController.deleteStock(id: Long)
+
+## Category
+GET           /form/category/list                                  controllers.view.ProductCategoryController.listCategories
+GET           /form/category/create                                controllers.view.ProductCategoryController.createCategory()
+POST          /form/category/create/handle                         controllers.view.ProductCategoryController.createCategoryHandle()
+GET           /form/category/update/:id                            controllers.view.ProductCategoryController.updateCategory(id: Long)
+POST          /form/category/update/handle                         controllers.view.ProductCategoryController.updateCategoryHandle
+GET           /form/category/delete/:id                            controllers.view.ProductCategoryController.deleteCategory(id: Long)
+
+## Subcategory
+GET           /form/subcategory/list                               controllers.view.ProductSubcategoryController.listSubcategories
+GET           /form/subcategory/create                             controllers.view.ProductSubcategoryController.createSubcategory()
+POST          /form/subcategory/create/handle                      controllers.view.ProductSubcategoryController.createSubcategoryHandle()
+GET           /form/subcategory/update/:id                         controllers.view.ProductSubcategoryController.updateSubcategory(id: Long)
+POST          /form/subcategory/update/handle                      controllers.view.ProductSubcategoryController.updateSubcategoryHandle
+GET           /form/subcategory/delete/:id                         controllers.view.ProductSubcategoryController.deleteSubcategory(id: Long)
+
+## Voucher
+GET           /form/coupon/list                                   controllers.view.CouponController.listCoupons
+GET           /form/coupon/create                                 controllers.view.CouponController.createCoupon()
+POST          /form/coupon/create/handle                          controllers.view.CouponController.createCouponHandle()
+GET           /form/coupon/update/:id                             controllers.view.CouponController.updateCoupon(id: Long)
+POST          /form/coupon/update/handle                          controllers.view.CouponController.updateCouponHandle()
+GET           /form/coupon/delete/:id                             controllers.view.CouponController.deleteCoupon(id: Long)
+
+## UserAddress
+GET           /form/user-info/list                              controllers.view.UserInfoController.listUserInfos
+GET           /form/user-info/create                            controllers.view.UserInfoController.createUserInfo()
+POST          /form/user-info/create/handle                     controllers.view.UserInfoController.createUserInfoHandle()
+GET           /form/user-info/update/:id                        controllers.view.UserInfoController.updateUserInfo(id: Long)
+POST          /form/user-info/update/handle                     controllers.view.UserInfoController.updateUserInfoHandle()
+GET           /form/user-info/delete/:id                        controllers.view.UserInfoController.deleteUserInfo(id: Long)
+
+## Payment Money
+GET           /form/payment-money/list                               controllers.view.PaymentMoneyController.listPaymentMoneys
+GET           /form/payment-money/create                             controllers.view.PaymentMoneyController.createPaymentMoney()
+POST          /form/payment-money/create/handle                      controllers.view.PaymentMoneyController.createPaymentMoneyHandle()
+GET           /form/payment-money/update/:id                         controllers.view.PaymentMoneyController.updatePaymentMoney(id: Long)
+POST          /form/payment-money/update/handle                      controllers.view.PaymentMoneyController.updatePaymentMoneyHandle()
+GET           /form/payment-money/delete/:id                         controllers.view.PaymentMoneyController.deletePaymentMoney(id: Long)
+
+## Payment
+GET           /form/payment/list                                   controllers.view.PaymentController.listPayments
+GET           /form/payment/create                                 controllers.view.PaymentController.createPayment()
+POST          /form/payment/create/handle                          controllers.view.PaymentController.createPaymentHandle()
+GET           /form/payment/update/:id                             controllers.view.PaymentController.updatePayment(id: Long)
+POST          /form/payment/update/handle                          controllers.view.PaymentController.updatePaymentHandle
+GET           /form/payment/delete/:id                             controllers.view.PaymentController.deletePayment(id: Long)
+
+## Order
+GET           /form/order/list                                     controllers.view.OrderController.listOrders
+GET           /form/order/create                                   controllers.view.OrderController.createOrder()
+POST          /form/order/create/handle                            controllers.view.OrderController.createOrderHandle()
+GET           /form/order/update/:id                               controllers.view.OrderController.updateOrder(id: Long)
+POST          /form/order/update/handle                            controllers.view.OrderController.updateOrderHandle
+GET           /form/order/delete/:id                               controllers.view.OrderController.deleteOrder(id: Long)
+
+## Order Item
+GET           /form/order-item/list                             controllers.view.OrderItemController.listOrderItems
+GET           /form/order-item/create                           controllers.view.OrderItemController.createOrderItem()
+POST          /form/order-item/create/handle                    controllers.view.OrderItemController.createOrderItemHandle()
+GET           /form/order-item/update/:id                       controllers.view.OrderItemController.updateOrderItem(id: Long)
+POST          /form/order-item/update/handle                    controllers.view.OrderItemController.updateOrderItemHandle
+GET           /form/order-item/delete/:id                       controllers.view.OrderItemController.deleteOrderItem(id: Long)
+
+# Product
+GET           /form/product/list                                   controllers.view.ProductController.listProducts
+GET           /form/product/create                                 controllers.view.ProductController.createProduct()
+POST          /form/product/create/handle                          controllers.view.ProductController.createProductHandle()
+GET           /form/product/update/:id                             controllers.view.ProductController.updateProduct(id: Long)
+POST          /form/product/update/handle                          controllers.view.ProductController.updateProductHandle
+GET           /form/product/delete/:id                             controllers.view.ProductController.deleteProduct(id: Long)
+
+
+
+
+
+#### REST
+## User
+GET           /api/user/get-by-id/:id                              controllers.api.UserController.getUserById(id: Long)
+GET           /api/user/list                                       controllers.api.UserController.listUsers
+POST          /api/user/create                                     controllers.api.UserController.createUser
+PUT           /api/user/update                                     controllers.api.UserController.updateUser
+DELETE        /api/user/delete/:id                                 controllers.api.UserController.deleteUser(id: Long)
+
+## Stock
+GET           /api/stock/get-by-id/:id                     controllers.api.StockController.getStockById(id: Long)
+GET           /api/stock/list                              controllers.api.StockController.listStocks
+POST          /api/stock/create                            controllers.api.StockController.createStock
+PUT           /api/stock/update                            controllers.api.StockController.updateStock
+DELETE        /api/stock/delete/:id                        controllers.api.StockController.deleteStock(id: Long)
+
+## Category
+GET           /api/category/get-by-id/:id                          controllers.api.ProductCategoryController.getCategoryById(id: Long)
+GET           /api/category/get-by-name/:name                      controllers.api.ProductCategoryController.getCategoryByName(name)
+GET           /api/category/list                                   controllers.api.ProductCategoryController.listCategories()
+POST          /api/category/create                                 controllers.api.ProductCategoryController.createCategory
+PUT           /api/category/update                                 controllers.api.ProductCategoryController.updateCategory
+DELETE        /api/category/delete/:id                             controllers.api.ProductCategoryController.deleteCategory(id: Long)
+
+## Subcategory
+GET           /api/subcategory/get-by-id/:id                       controllers.api.ProductSubcategoryController.getSubcategoryById(id: Long)
+GET           /api/subcategory/get-by-name/:name                   controllers.api.ProductSubcategoryController.getSubcategoryByName(name)
+GET           /api/subcategory/list                                controllers.api.ProductSubcategoryController.listSubcategories
+GET           /api/subcategory/list-by-category/:id                controllers.api.ProductSubcategoryController.listSubcategoriesByCategoryId(id: Long)
+POST          /api/subcategory/create                              controllers.api.ProductSubcategoryController.createSubcategory
+PUT           /api/subcategory/update                              controllers.api.ProductSubcategoryController.updateSubcategory
+DELETE        /api/subcategory/delete/:id                          controllers.api.ProductSubcategoryController.deleteSubcategory(id: Long)
+
+## Voucher
+GET           /api/coupon/get-by-id/:id                           controllers.api.CouponController.getCouponById(id: Long)
+GET           /api/coupon/list                                    controllers.api.CouponController.listCoupons()
+POST          /api/coupon/create                                  controllers.api.CouponController.createCoupon()
+PUT           /api/coupon/update                                  controllers.api.CouponController.updateCoupon()
+DELETE        /api/coupon/delete/:id                              controllers.api.CouponController.deleteCoupon(id: Long)
+
+## UserAddress
+GET           /api/user-info/get-by-id/:id                      controllers.api.UserInfoController.getUserInfoById(id: Long)
+GET           /api/user-info/list                               controllers.api.UserInfoController.listUserInfos()
+GET           /api/user-info/list-by-user/:id                   controllers.api.UserInfoController.listUserInfosByUserId(id: Long)
+POST          /api/user-info/create                             controllers.api.UserInfoController.createUserInfo()
+PUT           /api/user-info/update                             controllers.api.UserInfoController.updateUserInfo()
+DELETE        /api/user-info/delete/:id                         controllers.api.UserInfoController.deleteUserInfo(id: Long)
+
+## Payment Money
+GET           /api/payment-money/get-by-id/:id                       controllers.api.PaymentMoneyController.getPaymentMoneyById(id: Long)
+GET           /api/payment-money/list                                controllers.api.PaymentMoneyController.listPaymentMoneys
+GET           /api/payment-money/list-by-user/:id                    controllers.api.PaymentMoneyController.listPaymentMoneysByUserId(id: Long)
+POST          /api/payment-money/create                              controllers.api.PaymentMoneyController.createPaymentMoney()
+PUT           /api/payment-money/update                              controllers.api.PaymentMoneyController.updatePaymentMoney()
+DELETE        /api/payment-money/delete/:id                          controllers.api.PaymentMoneyController.deletePaymentMoney(id: Long)
+
+## Payment
+GET           /api/payment/get-by-id/:id                           controllers.api.PaymentController.getPaymentById(id: Long)
+GET           /api/payment/list                                    controllers.api.PaymentController.listPayments
+GET           /api/payment/list-by-user/:id                        controllers.api.PaymentController.listPaymentsByUserId(id: Long)
+GET           /api/payment/list-by-payment-money/:id               controllers.api.PaymentController.listPaymentsByPaymentMoneyId(id: Long)
+POST          /api/payment/create                                  controllers.api.PaymentController.createPayment
+PUT           /api/payment/update                                  controllers.api.PaymentController.updatePayment
+DELETE        /api/payment/delete/:id                              controllers.api.PaymentController.deletePayment(id: Long)
+
+## Order
+GET           /api/order/get-by-id/:id                             controllers.api.OrderController.getOrderById(id: Long)
+GET           /api/order/list                                      controllers.api.OrderController.listOrders
+GET           /api/order/list-by-user/:id                          controllers.api.OrderController.listOrdersByUserId(id: Long)
+GET           /api/order/list-by-payment/:id                       controllers.api.OrderController.listOrdersByPaymentId(id: Long)
+GET           /api/order/list-by-voucher/:id                       controllers.api.OrderController.listOrdersByCouponId(id: Long)
+POST          /api/order/create                                    controllers.api.OrderController.createOrder
+PUT           /api/order/update                                    controllers.api.OrderController.updateOrder
+DELETE        /api/order/delete/:id                                controllers.api.OrderController.deleteOrder(id: Long)
+
+## OrderProduct
+GET           /api/order-item/get-by-id/:id                     controllers.api.OrderItemController.getOrderItemById(id: Long)
+GET           /api/order-item/list                              controllers.api.OrderItemController.listOrderItems()
+GET           /api/order-item/list-products-by-order/:id        controllers.api.OrderItemController.listItemsByOrderId(id: Long)
+GET           /api/order-item/list-orders-by-product/:id        controllers.api.OrderItemController.listOrdersByItemId(id: Long)
+POST          /api/order-item/create                            controllers.api.OrderItemController.createOrderItem()
+PUT           /api/order-item/update                            controllers.api.OrderItemController.updateOrderItem()
+DELETE        /api/order-item/delete/:id                        controllers.api.OrderItemController.deleteOrderItem(id: Long)
+
+# Product
+GET           /api/product/get-by-id/:id                           controllers.api.ProductController.getProductById(id: Long)
+GET           /api/product/list                                    controllers.api.ProductController.listProducts
+GET           /api/product/list-by-stock/:id                       controllers.api.ProductController.listProductsByStockId(id: Long)
+GET           /api/product/list-by-category/:id                    controllers.api.ProductController.listProductsByCategoryId(id: Long)
+GET           /api/product/list-by-subcategory/:id                 controllers.api.ProductController.listProductsBySubcategoryId(id: Long)
+POST          /api/product/create                                  controllers.api.ProductController.createProduct
+PUT           /api/product/update                                  controllers.api.ProductController.updateProduct
+DELETE        /api/product/delete/:id                              controllers.api.ProductController.deleteProduct(id: Long)

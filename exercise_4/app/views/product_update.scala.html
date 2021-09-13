@@ -1,0 +1,53 @@
+@import controllers.view.UpdateProductForm
+@(product: Form[UpdateProductForm], stocks: Seq[Stock], categories: Seq[ProductCategory], subcategories: Seq[ProductSubcategory])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.ProductController.updateProductHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@product("id").value" type="hidden" />
+    @inputText(product("name"))
+    @inputText(product("description"))
+
+    <label for="stock"></label>
+    <select name="stockId" id="category">
+    @for(entity <- stocks) {
+        @if(entity.id.toString == product("stock").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.totalPrice</option>
+        } else {
+            <option value="@entity.id">@entity.totalPrice</option>
+        }
+
+    }
+    </select>
+
+    <label for="category"></label>
+    <select name="categoryId" id="category">
+    @for(entity <- categories) {
+        @if(entity.id.toString == product("category").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.name</option>
+        } else {
+            <option value="@entity.id">@entity.name</option>
+        }
+
+    }
+    </select>
+
+    <label for="subcategory"></label>
+    <select name="subcategoryId" id="subcategory">
+    @for(entity <- subcategories) {
+        @if(entity.id.toString == product("subcategory").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.name</option>
+        } else {
+            <option value="@entity.id">@entity.name</option>
+        }
+
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Update Product"/>
+    </div>
+}

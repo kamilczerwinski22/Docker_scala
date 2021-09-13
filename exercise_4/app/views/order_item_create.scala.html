@@ -1,0 +1,29 @@
+@import controllers.view.CreateOrderItemForm
+@(orderProduct: Form[CreateOrderItemForm], orders: Seq[Order], products: Seq[Product])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.OrderItemController.createOrderItemHandle()) {
+    @helper.CSRF.formField
+    @inputText(orderProduct("amount"))
+
+    <label for="order"></label>
+    <select name="orderId" id="order">
+    @for(entry <- orders) {
+        <option value="@entry.id">@entry.id</option>
+    }
+    </select>
+
+    <label for="item"></label>
+    <select name="itemId" id="item">
+    @for(entry <- products) {
+        <option value="@entry.id">@entry.name</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add OrderProduct"/>
+    </div>
+}

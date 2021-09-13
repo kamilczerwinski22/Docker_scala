@@ -1,0 +1,29 @@
+@import controllers.view.CreatePaymentForm
+@(payment: Form[CreatePaymentForm], users: Seq[User], paymentMoneys: Seq[PaymentMoney])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.PaymentController.createPaymentHandle()) {
+    @helper.CSRF.formField
+    @inputText(payment("amount"))
+
+    <label for="user"></label>
+    <select name="userId" id="user">
+    @for(entry <- users) {
+        <option value="@entry.id">@entry.email</option>
+    }
+    </select>
+
+    <label for="paymentMoney"></label>
+    <select name="paymentMoneyId" id="paymentMoney">
+    @for(entry <- paymentMoneys) {
+        <option value="@entry.id">@entry.id</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add Payment"/>
+    </div>
+}

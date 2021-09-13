@@ -1,0 +1,22 @@
+@import controllers.view.CreateProductSubcategoryForm
+@(subcategory: Form[CreateProductSubcategoryForm], categories: Seq[ProductCategory])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.ProductSubcategoryController.createSubcategoryHandle()) {
+    @helper.CSRF.formField
+    @inputText(subcategory("name"))
+
+    <label for="category"></label>
+    <select name="categoryId" id="category">
+    @for(entry <- categories) {
+        <option value="@entry.id">@entry.name</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add Subcategory"/>
+    </div>
+}

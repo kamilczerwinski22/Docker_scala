@@ -1,0 +1,10 @@
+@(subcategories: Seq[ProductSubcategory])
+
+@for(subcategory <- subcategories) {
+    <strong>@subcategory.name</strong>
+    @subcategory.id
+    @subcategory.categoryId
+    <a href="@controllers.view.routes.ProductSubcategoryController.updateSubcategory(subcategory.id)">Edit</a>
+    <a href="@controllers.view.routes.ProductSubcategoryController.deleteSubcategory(subcategory.id)">Delete</a>
+    <br>
+}

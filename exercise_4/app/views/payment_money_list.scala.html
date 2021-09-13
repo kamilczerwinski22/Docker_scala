@@ -1,0 +1,10 @@
+@(paymentMoneys: Seq[PaymentMoney])
+
+@for(paymentMoney <- paymentMoneys) {
+    <strong>@paymentMoney.cardholderName</strong>
+    @paymentMoney.id
+    @paymentMoney.userId
+    <a href="@controllers.view.routes.PaymentMoneyController.updatePaymentMoney(paymentMoney.id)">Edit</a>
+    <a href="@controllers.view.routes.PaymentMoneyController.deletePaymentMoney(paymentMoney.id)">Delete</a>
+    <br>
+}

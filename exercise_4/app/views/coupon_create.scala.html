@@ -1,0 +1,16 @@
+@import controllers.view.CreateCouponForm
+@(coupon: Form[CreateCouponForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.view.routes.CouponController.createCouponHandle()) {
+        @helper.CSRF.formField
+        @inputText(coupon("amount"))
+        @inputText(coupon("usages"))
+
+        <div class="buttons">
+            <input type="submit" value="Add Coupon"/>
+        </div>
+    }

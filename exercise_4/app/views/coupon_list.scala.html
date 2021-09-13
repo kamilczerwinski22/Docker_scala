@@ -1,0 +1,10 @@
+@(coupons: Seq[Coupon])
+
+    @for(coupon <- coupons) {
+        <strong>@coupon.id</strong>
+        @coupon.amount
+        @coupon.usages
+        <a href="@controllers.view.routes.CouponController.updateCoupon(coupon.id)">Edit</a>
+        <a href="@controllers.view.routes.CouponController.deleteCoupon(coupon.id)">Delete</a>
+        <br>
+    }

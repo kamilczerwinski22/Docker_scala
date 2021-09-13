@@ -1,0 +1,11 @@
+@(orderItems: Seq[OrderItem])
+
+@for(orderItem <- orderItems) {
+    <strong>@orderItem.id</strong>
+    @orderItem.orderId
+    @orderItem.itemId
+    @orderItem.amount
+    <a href="@controllers.view.routes.OrderItemController.updateOrderItem(orderItem.id)">Edit</a>
+    <a href="@controllers.view.routes.OrderItemController.deleteOrderItem(orderItem.id)">Delete</a>
+    <br>
+}
