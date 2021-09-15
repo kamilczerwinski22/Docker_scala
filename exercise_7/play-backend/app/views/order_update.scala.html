@@ -1,0 +1,64 @@
+@import controllers.view.UpdateOrderForm
+@(order: Form[UpdateOrderForm], users: Seq[User], addresses: Seq[UserAddress], payments: Seq[Payment], vouchers: Seq[Voucher])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.OrderController.updateOrderHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@order("id").value" type="hidden" />
+
+    <label for="user">User</label>
+    <select name="userId" id="user">
+    @for(entity <- users) {
+        @if(entity.id.toString == order("user").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.email</option>
+        } else {
+            <option value="@entity.id">@entity.email</option>
+        }
+
+    }
+    </select>
+
+    <label for="address">Info</label>
+    <select name="addressId" id="address">
+    @for(entity <- addresses) {
+        @if(entity.id.toString == order("address").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.address</option>
+        } else {
+            <option value="@entity.id">@entity.address</option>
+        }
+
+    }
+    </select>
+
+    <label for="payment">Payment</label>
+    <select name="paymentId" id="payment">
+    @for(entity <- payments) {
+        @if(entity.id.toString == order("payment").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.id</option>
+        } else {
+            <option value="@entity.id">@entity.id</option>
+        }
+
+    }
+    </select>
+
+    <label for="voucher">Coupon</label>
+    <select name="voucherId" id="voucher">
+    @for(entity <- vouchers) {
+        @if(entity.id.toString == order("voucher").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.id</option>
+        } else {
+            <option value="@entity.id">@entity.id</option>
+        }
+
+    }
+    </select>
+
+
+    <div class="buttons">
+        <input type="submit" value="Update Order"/>
+    </div>
+}

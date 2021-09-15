@@ -1,0 +1,11 @@
+@(vouchers: Seq[Voucher])
+
+@for(voucher <- vouchers) {
+    <strong>@voucher.id</strong>
+    @voucher.code
+    @voucher.amount
+    @voucher.usages
+    <a href="@controllers.view.routes.VoucherController.updateVoucher(voucher.id)">Edit</a>
+    <a href="@controllers.view.routes.VoucherController.deleteVoucher(voucher.id)">Delete</a>
+    <br>
+}
