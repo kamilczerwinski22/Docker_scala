@@ -1,0 +1,18 @@
+@import controllers.view.UpdateStockForm
+@(stock: Form[UpdateStockForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.StockController.updateStockHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@stock("id").value" type="hidden" />
+    @inputText(stock("unitPrice"))
+    @inputText(stock("totalPrice"))
+    @inputText(stock("totalStock"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Stock"/>
+    </div>
+}

@@ -1,0 +1,19 @@
+@import controllers.view.UpdateVoucherForm
+@(voucher: Form[UpdateVoucherForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.VoucherController.updateVoucherHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@voucher("id").value" type="hidden" />
+    @inputText(voucher("code"))
+    @inputText(voucher("amount"))
+    @inputText(voucher("usages"))
+
+
+    <div class="buttons">
+        <input type="submit" value="Update Voucher"/>
+    </div>
+}
