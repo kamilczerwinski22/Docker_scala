@@ -98,10 +98,10 @@ export class OrderStore implements IOrderStore {
 			}
 			const payment = await getPayment(order.paymentId);
 			const products = await listProductsByOrderId(order.id);
-			const card = creditCards.data.filter((card: any) => payment.data.creditCardId === card.id);
-			const address = userAddresses.data.filter((address: any) => order.addressId === address.id);
+			const card = creditCards.data.filter((creditCard: any) => payment.data.creditCardId === creditCard.id);
+			const address = userAddresses.data.filter((userAddress: any) => order.addressId === userAddress.id);
 			const productsSummary = await Promise.all(products.data.map(async (product: ProductDb) => {
-				const quantity = orderProduct.data.filter((orderProduct: any) => orderProduct.orderId === order.id && orderProduct.productId === product.id);
+				const quantity = orderProduct.data.filter((orderCurrentProduct: any) => orderCurrentProduct.orderId === order.id && orderCurrentProduct.productId === product.id);
 				const price = stocks.data.filter((stock: any) => product.stockId === stock.id);
 				const productDetails: ProductDetails = {
 					name: product.name,

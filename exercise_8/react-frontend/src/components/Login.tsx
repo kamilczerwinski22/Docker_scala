@@ -7,7 +7,6 @@ import {RootStore} from '../stores/RootStore';
 import {inject, observer} from 'mobx-react';
 import {GoogleLoginButton} from 'react-social-login-buttons';
 import {GOOGLE_LOGIN_URL} from '../services/user';
-import {EmailPassword} from './EmailPassword';
 import {Button} from 'react-bootstrap';
 
 export interface LoginProps {

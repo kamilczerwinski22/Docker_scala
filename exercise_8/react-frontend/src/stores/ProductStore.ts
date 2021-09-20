@@ -3,8 +3,6 @@ import {makeAutoObservable} from 'mobx';
 import {ProductProps} from '../components/Product';
 import {listProducts} from '../services/product';
 import {listStocks} from '../services/stock';
-import {listCategories} from '../services/category';
-import {listSubcategories} from '../services/subcategory';
 
 interface ProductDb {
 	id: number,

@@ -25,8 +25,8 @@ export class BasketStore implements IBasketStore {
 		if (entityIdx >= 0) {
 			this.products = [
 				...this.products.slice(0, entityIdx),
-				...this.products.slice(entityIdx + 1, this.products.length),
-				{...product, quantity: this.products[entityIdx].quantity + 1}
+				{...product, quantity: this.products[entityIdx].quantity + 1},
+				...this.products.slice(entityIdx + 1, this.products.length)
 			]
 		} else {
 			this.products = [...this.products, {...product, quantity: 1}]
