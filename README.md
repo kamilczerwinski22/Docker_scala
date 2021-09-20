@@ -1,19 +1,9 @@
 # E-biznes 2021
 
-Repository with Scala project for **E-biznes 2021** course at Jagiellonian University
+Zadania od 1 do 9 (oprócz 7, Dockerfile stworzony jednak deploy się nie powiódł, opracowano wiec na localhost)
 
-All `README.md` files explaining purpose of each exercise are located in adequate folders.
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=kamilczerwinski22_F1Store_ebiznes)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=kamilczerwinski22_F1Store_ebiznes&metric=bugs)](https://sonarcloud.io/dashboard?id=kamilczerwinski22_F1Store_ebiznes)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kamilczerwinski22_F1Store_ebiznes&metric=code_smells)](https://sonarcloud.io/dashboard?id=kamilczerwinski22_F1Store_ebiznes)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=kamilczerwinski22_F1Store_ebiznes&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=kamilczerwinski22_F1Store_ebiznes)
 
-Repository with scala docker and some other usefull stuff for university project
-
-*Updated for sbt 1.5.1 - 18.05.2021*
-
-
-### [Docker link](https://hub.docker.com/repository/docker/kamilczerwinski/ebiznes2021/general)
-
-
-Download in terminal: ```docker pull kamilczerwinski/ebiznes2021:latest```
-
-
-
-<sub>Due to incorrect naming, the previous image was overwritten. However, the file to create it can be found in previous versions of the Dockerfile</sub>
