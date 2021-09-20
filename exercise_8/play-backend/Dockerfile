@@ -27,12 +27,18 @@ RUN apt-get install sbt
 RUN useradd -ms /bin/bash kamilczerwinski
 RUN adduser kamilczerwinski sudo
 
+
+SHELL ["/bin/bash", "-c"]
+
 EXPOSE 8080
-EXPOSE 5000
+EXPOSE 3000
 EXPOSE 9000
 
 USER kamilczerwinski
-WORKDIR /home/kamilczerwinski
-RUN mkdir /home/kamilczerwinski/ebiznes2021
 
-VOLUME /home/kamilczerwinsk/ebiznes2021
+VOLUME ["/home/kamilczerwinsk/ebiznes2021"]
+COPY . /home/kamilczerwinsk/ebiznes2021
+WORKDIR /home/kamilczerwinsk/ebiznes2021
+
+RUN cd /home/kamilczerwinsk/ebiznes2021
+CMD ["sbt"]
