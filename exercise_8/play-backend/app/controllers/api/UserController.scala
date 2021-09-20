@@ -25,28 +25,4 @@ class UserController @Inject()(val userRepository: UserRepository,
       case None => NotFound("user not found")
     }
   }
-
-//  def createUser(): Action[JsValue] = Action.async(parse.json) { implicit request =>
-//    request.body.validate[User].map {
-//      user =>
-//        userRepository.create(user.id, user.loginInfo, user.email).map { res =>
-//          Ok(Json.toJson(res))
-//        }
-//    }.getOrElse(Future.successful(BadRequest("incorrect data have been provided")))
-//  }
-//
-//  def updateUser(): Action[JsValue] = Action.async(parse.json) { request =>
-//    request.body.validate[User].map {
-//      user =>
-//        userRepository.update(user.id, user).map { res =>
-//          Ok(Json.toJson(res))
-//        }
-//    }.getOrElse(Future.successful(BadRequest("invalid json")))
-//  }
-//
-//  def deleteUser(id: Long): Action[AnyContent] = Action.async {
-//    userRepository.delete(id).map { res =>
-//      Ok(Json.toJson(res))
-//    }
-//  }
 }

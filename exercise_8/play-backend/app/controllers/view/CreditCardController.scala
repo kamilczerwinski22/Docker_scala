@@ -15,6 +15,8 @@ class CreditCardController @Inject()(creditCardRepo: CreditCardRepository,
                                      userRepository: UserRepository,
                                      cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
+  val url = "/form/credit-card/list"
+
   val creditCardForm: Form[CreateCreditCardForm] = Form {
     mapping(
       "userId" -> longNumber,
@@ -65,7 +67,7 @@ class CreditCardController @Inject()(creditCardRepo: CreditCardRepository,
       },
       creditCard => {
         creditCardRepo.create(creditCard.userId, creditCard.cardholderName, creditCard.number, creditCard.expDate, creditCard.cvcCode).map { _ =>
-          Redirect("/form/credit-card/list")
+          Redirect(url)
         }
       }
     )
@@ -88,7 +90,7 @@ class CreditCardController @Inject()(creditCardRepo: CreditCardRepository,
       },
       creditCard => {
         creditCardRepo.update(creditCard.id, CreditCard(creditCard.id, creditCard.userId, creditCard.cardholderName, creditCard.number, creditCard.expDate, creditCard.cvcCode)).map { _ =>
-          Redirect("/form/credit-card/list")
+          Redirect(url)
         }
       }
     )
@@ -96,7 +98,7 @@ class CreditCardController @Inject()(creditCardRepo: CreditCardRepository,
 
   def deleteCreditCard(id: Long): Action[AnyContent] = Action {
     creditCardRepo.delete(id)
-    Redirect("/form/credit-card/list")
+    Redirect(url)
   }
 }
 

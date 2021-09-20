@@ -13,6 +13,8 @@ import scala.util.{Failure, Success}
 @Singleton
 class SubcategoryController @Inject()(subcategoryRepo: SubcategoryRepository, categoryRepo: CategoryRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
+  val url = "/form/subcategory/list"
+
   val subcategoryForm: Form[CreateSubcategoryForm] = Form {
     mapping(
       "categoryId" -> longNumber,
@@ -57,7 +59,7 @@ class SubcategoryController @Inject()(subcategoryRepo: SubcategoryRepository, ca
       },
       subcategory => {
         subcategoryRepo.create(subcategory.name, subcategory.categoryId).map { _ =>
-          Redirect("/form/subcategory/list")
+          Redirect(url)
         }
       }
     )
@@ -80,7 +82,7 @@ class SubcategoryController @Inject()(subcategoryRepo: SubcategoryRepository, ca
       },
       subcategory => {
         subcategoryRepo.update(subcategory.id, Subcategory(subcategory.id, subcategory.categoryId, subcategory.name)).map { _ =>
-          Redirect("/form/subcategory/list")
+          Redirect(url)
         }
       }
     )
@@ -88,7 +90,7 @@ class SubcategoryController @Inject()(subcategoryRepo: SubcategoryRepository, ca
 
   def deleteSubcategory(id: Long): Action[AnyContent] = Action {
     subcategoryRepo.delete(id)
-    Redirect("/form/subcategory/list")
+    Redirect(url)
   }
 }
 

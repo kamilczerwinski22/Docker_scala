@@ -18,6 +18,8 @@ class OrderController @Inject()(orderRepo: OrderRepository,
                                 paymentRepository: PaymentRepository,
                                 voucherRepository: VoucherRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
+  val url = "/form/order/list"
+
   val orderForm: Form[CreateOrderForm] = Form {
     mapping(
       "userId" -> longNumber,
@@ -84,7 +86,7 @@ class OrderController @Inject()(orderRepo: OrderRepository,
       },
       order => {
         orderRepo.create(order.userId, order.addressId, order.paymentId, order.voucherId).map { _ =>
-          Redirect("/form/order/list")
+          Redirect(url)
         }
       }
     )
@@ -107,7 +109,7 @@ class OrderController @Inject()(orderRepo: OrderRepository,
       },
       order => {
         orderRepo.update(order.id, Order(order.id, order.userId, order.paymentId, order.voucherId)).map { _ =>
-          Redirect("/form/order/list")
+          Redirect(url)
         }
       }
     )
@@ -115,7 +117,7 @@ class OrderController @Inject()(orderRepo: OrderRepository,
 
   def deleteOrder(id: Long): Action[AnyContent] = Action {
     orderRepo.delete(id)
-    Redirect("/form/order/list")
+    Redirect(url)
   }
 }
 

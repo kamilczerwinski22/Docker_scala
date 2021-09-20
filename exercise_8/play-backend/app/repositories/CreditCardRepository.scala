@@ -18,7 +18,7 @@ class CreditCardRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, v
 
     def id= column[Long]("id", O.PrimaryKey, O.AutoInc)
     def userId = column[Long]("user_id")
-    def user_fk = foreignKey("user_fk", userId, user_)(_.id)
+    def userFk = foreignKey("user_fk", userId, user_)(_.id)
     def cardholderName = column[String]("cardholder_name")
     def number = column[String]("number")
     def expDate = column[String]("exp_date")

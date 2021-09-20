@@ -3,10 +3,6 @@ package repositories
 import models.UserAddress
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
-
-import java.sql.Timestamp
-import java.time.Instant
-import java.util.Date
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -21,7 +17,7 @@ class UserAddressRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, 
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def userId = column[Long]("user_id")
-    def userId_fk = foreignKey("user_fk", userId, user)(_.id)
+    def userFk = foreignKey("user_fk", userId, user)(_.id)
     def firstname = column[String]("firstname")
     def lastname = column[String]("lastname")
     def address = column[String]("address")
@@ -56,8 +52,8 @@ class UserAddressRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, 
     userAddress.filter(_.id === id).result.headOption
   }
 
-  def update(id: Long, new_userAddress: UserAddress): Future[Int] = {
-    val userAddressToUpdate: UserAddress = new_userAddress.copy(id)
+  def update(id: Long, newUserAddress: UserAddress): Future[Int] = {
+    val userAddressToUpdate: UserAddress = newUserAddress.copy(id)
     db.run(userAddress.filter(_.id === id).update(userAddressToUpdate))
   }
 

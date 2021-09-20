@@ -18,7 +18,7 @@ class SubcategoryRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, 
   class SubcategoryTable(tag: Tag) extends Table[Subcategory](tag, "subcategory") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def categoryId = column[Long]("category_id")
-    def category_fk = foreignKey("category_fk", categoryId, categ)(_.id)
+    def categoryFk = foreignKey("category_fk", categoryId, categ)(_.id)
     def name = column[String]("name")
 
 

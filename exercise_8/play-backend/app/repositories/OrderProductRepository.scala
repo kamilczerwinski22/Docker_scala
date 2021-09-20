@@ -23,9 +23,9 @@ class OrderProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider,
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
 
     def orderId = column[Long]("order_id")
-    def order_fk = foreignKey("order_fk", orderId, order)(_.id)
+    def orderFk = foreignKey("order_fk", orderId, order)(_.id)
     def productId = column[Long]("product_id")
-    def product_fk = foreignKey("product_id_fk", productId, product)(_.id)
+    def productFk = foreignKey("product_id_fk", productId, product)(_.id)
     def amount = column[Int]("amount")
 
 

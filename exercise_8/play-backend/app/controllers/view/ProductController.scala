@@ -17,6 +17,8 @@ class ProductController @Inject()(productRepo: ProductRepository,
                                   categoryRepository: CategoryRepository,
                                   subcategoryRepository: SubcategoryRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
+  val url = "/form/product/list"
+
   val productForm: Form[CreateProductForm] = Form {
     mapping(
       "stockId" -> longNumber,
@@ -82,7 +84,7 @@ class ProductController @Inject()(productRepo: ProductRepository,
       },
       product => {
         productRepo.create(product.stockId, product.categoryId, product.subcategoryId, product.name, product.imageUrl, product.description).map { _ =>
-          Redirect("/form/product/list")
+          Redirect(url)
         }
       }
     )
@@ -105,7 +107,7 @@ class ProductController @Inject()(productRepo: ProductRepository,
       },
       product => {
         productRepo.update(product.id, Product(product.id, product.stockId, product.categoryId, product.subcategoryId, product.name, product.imageUrl, product.description)).map { _ =>
-          Redirect("/form/product/list")
+          Redirect(url)
         }
       }
     )
@@ -113,7 +115,7 @@ class ProductController @Inject()(productRepo: ProductRepository,
 
   def deleteProduct(id: Long): Action[AnyContent] = Action {
     productRepo.delete(id)
-    Redirect("/form/product/list")
+    Redirect(url)
   }
 }
 

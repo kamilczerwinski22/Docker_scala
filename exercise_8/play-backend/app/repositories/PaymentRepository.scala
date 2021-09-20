@@ -21,9 +21,9 @@ class PaymentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, val 
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def userId = column[Long]("user_id")
-    def user_fk = foreignKey("user_fk", userId, user_)(_.id)
+    def userFk = foreignKey("user_fk", userId, user_)(_.id)
     def creditCardId = column[Long]("credit_card_id")
-    def creditCard_fk = foreignKey("credit_card_id_fk", creditCardId, creditCard_)(_.id)
+    def creditCardFk = foreignKey("credit_card_id_fk", creditCardId, creditCard_)(_.id)
     def amount = column[Int]("amount")
 
     def * = (id, userId, creditCardId, amount) <> ((Payment.apply _).tupled, Payment.unapply)

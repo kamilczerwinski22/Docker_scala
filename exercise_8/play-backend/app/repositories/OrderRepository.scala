@@ -33,12 +33,12 @@ class OrderRepository @Inject()(dbConfigProvider: DatabaseConfigProvider,
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
 
     def userId = column[Long]("user_id")
-    def user_fk = foreignKey("user_fk", userId, user)(_.id)
+    def userFk = foreignKey("user_fk", userId, user)(_.id)
     def addressId = column[Long]("address_id")
     def paymentId = column[Long]("payment_id")
-    def payment_fk = foreignKey("payment_id_fk", paymentId, payment)(_.id)
+    def paymentFk = foreignKey("payment_id_fk", paymentId, payment)(_.id)
     def voucherId = column[Long]("voucher_id", O.Default(0))
-    def voucher_fk = foreignKey("voucher_id_fk", voucherId, voucher)(_.id)
+    def voucherFk = foreignKey("voucher_id_fk", voucherId, voucher)(_.id)
 
     def * = (id, userId, addressId, paymentId, voucherId) <> ((Order.apply _).tupled, Order.unapply)
   }

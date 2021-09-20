@@ -16,6 +16,8 @@ class PaymentController @Inject()(paymentRepo: PaymentRepository,
                                   userRepository: UserRepository,
                                   creditCardRepository: CreditCardRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
+  val url = "/form/payment/list"
+
   val paymentForm: Form[CreatePaymentForm] = Form {
     mapping(
       "userId" -> longNumber,
@@ -69,7 +71,7 @@ class PaymentController @Inject()(paymentRepo: PaymentRepository,
       },
       payment => {
         paymentRepo.create(payment.userId, payment.creditCardId, payment.amount).map { _ =>
-          Redirect("/form/payment/list")
+          Redirect(url)
         }
       }
     )
@@ -92,7 +94,7 @@ class PaymentController @Inject()(paymentRepo: PaymentRepository,
       },
       payment => {
         paymentRepo.update(payment.id, Payment(payment.id, payment.userId, payment.creditCardId, payment.amount)).map { _ =>
-          Redirect("/form/payment/list")
+          Redirect(url)
         }
       }
     )
@@ -100,7 +102,7 @@ class PaymentController @Inject()(paymentRepo: PaymentRepository,
 
   def deletePayment(id: Long): Action[AnyContent] = Action {
     paymentRepo.delete(id)
-    Redirect("/form/payment/list")
+    Redirect(url)
   }
 }
 
