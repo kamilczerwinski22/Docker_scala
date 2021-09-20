@@ -1,0 +1,41 @@
+@import controllers.view.UpdateOrderProductForm
+@(orderProduct: Form[UpdateOrderProductForm], orders: Seq[Order], products: Seq[Product])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.view.routes.OrderProductController.updateOrderProductHandle) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@orderProduct("id").value" type="hidden" />
+    @inputText(orderProduct("amount"))
+
+    <label for="order">Order</label>
+    <select name="orderId" id="order">
+    @for(entity <- orders) {
+        @if(entity.id.toString == orderProduct("order").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.id</option>
+        } else {
+            <option value="@entity.id">@entity.id</option>
+        }
+
+    }
+    </select>
+
+    <label for="product">Product</label>
+    <select name="productId" id="product">
+    @for(entity <- products) {
+        @if(entity.id.toString == orderProduct("product").value.getOrElse(0)) {
+            <option value="@entity.id" selected>@entity.name</option>
+        } else {
+            <option value="@entity.id">@entity.name</option>
+        }
+
+    }
+    </select>
+
+
+    <div class="buttons">
+        <input type="submit" value="Update OrderProduct"/>
+    </div>
+}

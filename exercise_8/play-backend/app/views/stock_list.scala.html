@@ -1,0 +1,11 @@
+@(stocks: Seq[Stock])
+
+@for(stock <- stocks) {
+    <strong>@stock.id</strong>
+    @stock.unitPrice
+    @stock.totalPrice
+    @stock.totalStock
+    <a href="@controllers.view.routes.StockController.updateStock(stock.id)">Edit</a>
+    <a href="@controllers.view.routes.StockController.deleteStock(stock.id)">Delete</a>
+    <br>
+}
